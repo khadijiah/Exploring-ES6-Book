@@ -1,13 +1,9 @@
 
-# 4. Core ES6 features 
-
-This chapter describes the core ES6 features. These features are easy to adopt; the remaining features are mainly of interest to library authors. I explain each feature via the corresponding ES5 code.
-
-## 4. 核心ES6特性
+# 4. 核心ES6特性
 
 本章描述了ES6的核心特性。这些特性是日常采用的特性;剩下的特性主要是学术作者们（这里的原文是 library authors，感觉翻译的不太合理）感兴趣的。我将通过相应的ES5代码解释每一个特性。
 
-### 4.1  从 var 到 let/const
+## 4.1  从 var 到 let/const
 
 在ES5中，通过var声明变量。这些变量是函数作用域的，它们的作用域是最内层封闭的函数。var的行为有时令人困惑。举个ES5的例子:
 
