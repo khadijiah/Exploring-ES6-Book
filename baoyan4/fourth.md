@@ -61,6 +61,93 @@ func(false); // 3
 其它的使用 let，用于值会被改变的变量。
 避免使用 var。
 
+### 自己加的内容（这不是翻译）
+
+学习分割线开始
+
+---
+
+顺便来聊聊js中定义变量时有无var的区别吧，虽然es6往后是不会再出现了，但是个知识点呀。
+就上面的那段代码，这样写试试，会输出什么呢：
+
+```html
+
+var x = 3;
+function func(randomize) {
+  if (randomize) {
+    var x = Math.random();
+    return x;
+  }
+  return x;
+}
+func(false);  // undefined
+console.log(x); // 3
+
+2、
+var x = 3;
+function func(randomize) {
+  if (randomize) {
+    x = Math.random();
+    return x;
+  }
+  return x;
+}
+func(false); // 3
+console.log(x); // 3
+
+```
+
+看到结果输出了3，没错；为什么呢？
+
+1. 在函数作用域内 加var定义的变量是局部变量，不加var定义的就成了全局变量。
+
+    换成let会怎么样呢:
+
+    ``` html
+    
+    let x = 3;
+    function func(randomize) {
+      if (randomize) {
+      let x = Math.random(); // 这里用不用let结果都是一样的
+        return x;
+      }
+      return x;
+    }
+    console.log(func(false)); // 3
+    console.log(x); // 3
+    
+    ```
+
+2. 因为使用var 定义变量还会提升变量声明，来再举个栗子：
+
+* 使用var
+
+``` html
+    function hh(){
+        console.log(a);
+        var a = 'hello world';
+    }
+    hh()  // 'undefined'
+```
+
+* 不用var
+
+``` html
+
+function hh(){
+    console.log(a);
+    a = 'hello world';
+   }
+   hh()  // 'a is not defined'
+
+```
+
+3. 还有就是在ES5的'use strict'模式下，如果变量没有使用var定义，是会报错的。
+
+学习分割线结束
+
+---
+
 ## 4.2 从 IIFE 到块
 
 ES5 中如果你想限制变量 tmp 的作用范围仅在某一块代码中，你必须使用一个叫 IIFE(Immediately-Invoked Function Expression，立即执行函数表达式) 的模式：
